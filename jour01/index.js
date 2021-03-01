@@ -28,22 +28,26 @@ app.listen(8000, () => {
   
   const authors = [
     {
+      id:1,
       name: "Lawrence Nowell",
       nationality: "UK",
       books: "Beowulf"
     },
     {
+      id:2,
       name: "William Shakespeare",
       nationality: "UK",
       books: "Hamlet, Othello, Romeo and Juliet, MacBeth"
     },
     {
+      id:3,
       name: "Charles Dickens",
       nationality: "US",
       books: "Oliver Twist, A Christmas Carol"
 
     },
     {
+      id:4,
         username: "Oscar Wilde",
         nationality: "UK",
         books: "The Picture of Dorian Gray, The Importance of Being Earnest"
@@ -60,7 +64,7 @@ app.get('/authors/:id', (req, res) => {
     if (authors[req.params.id] === undefined) {
         res.send(`The author id ${req.params.id} does not exist`)
     }else{
-        res.send(`His name is ${authors[req.params.id].name }! and he was born in ${authors[req.params.id].nationality} and he wrote ${authors[req.params.id].books}`)
+        res.send(`His name is ${authors[req.params.id].name } and he was born in ${authors[req.params.id].nationality} and he wrote ${authors[req.params.id].books}`)
 
 
     }
@@ -69,6 +73,11 @@ app.get('/authors/:id', (req, res) => {
 
 app.get("/cars/", (req, res) => {
     res.send("error fatal l'ordi va expluser")
+})
+
+
+app.get("/authors/:id/books", (req, res) => {
+  res.send(`He wrote ${JSON.stringify(authors[req.params.id].books)}`)
 })
 
 
