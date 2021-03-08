@@ -16,22 +16,20 @@ const carsSchema = new Schema({
 });
 
 const carModel = mongoose.model("cars", carsSchema);
-carModel.deleteMany({}).then(() => {
-  carModel.create([
+
+carModel
+  .insertMany([
     {
-      brand: "Renault",
-      model: "Espace",
-      year: 1999,
+      brand: "Aston Martin",
+      model: "DB9",
+      year: 2010,
     },
     {
-      brand: "Renault",
-      model: "Scenic",
-      year: 2004,
-    },
-    {
-      brand: "Peugeot",
-      model: "308",
+      brand: "Range Rover",
+      model: "Discovery Sport",
       year: 2017,
     },
-  ]);
-});
+  ])
+  .then((response) => {
+    console.log(response);
+  });

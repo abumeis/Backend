@@ -17,10 +17,10 @@ const carsSchema = new Schema({
 
 const carModel = mongoose.model("cars", carsSchema);
 
-carModel.findById('604642b01c59ca2714d8d872',(error,data)=>{
-    if(error){
-        console.log(error)
-    }else{
-        console.log(data)
-    }
-})
+carModel.findById("604642b01c59ca2714d8d872", (error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log(data);
+  }
+});
