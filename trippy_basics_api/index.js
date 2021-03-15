@@ -189,7 +189,7 @@ app.get("/restaurants/",async(req, res) =>{
           name: req.query.name, 
         }
       );
-      res.send("the resto address has been modified");
+      res.send("the resto name has been modified");
     } catch (error) {
       res.send("the resturant name has Not been modified");
     }
