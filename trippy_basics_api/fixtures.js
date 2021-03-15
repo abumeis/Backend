@@ -44,6 +44,7 @@ hotelModel.deleteMany({}).then(() => {
       hasPool: true,
       priceCategory: 1111,
     },
+    
   ]);
 }); //
 
