@@ -7,6 +7,7 @@ app.use(bodyParser.json())
 const port = 8000;
 const hotelModel = require("./models/hotel");
 const restaurantModel = require("./models/restaurant");
+const roomModel = require("./models/rooms");
 mongoose.connect(
   "mongodb://localhost:27017/trippy_basics",
   { useNewUrlParser: true, useUnifiedTopology: true },
@@ -40,14 +41,14 @@ app.get("/hotels/:id", async (req, res) => {
 //pagination
 app.get("/hotels/",async(req, res) =>{
     try {
+        const limit = req.query;
       const  page  = req.query;
-     const limit = req.query;
      //const options = {
      //   page: parseInt(page, 10) || 1,
      //   limit: parseInt(limit, 10)|| 1,
      // };
      
-      const hotels = await hotelModel.paginate({}, { page: 2, limit: 3 });
+      const hotels = await hotelModel.paginate({}, {limit: 3 , page: 2});
       return res.json(hotels);
     } catch (error) {
       console.log("the pagination is not working");
@@ -147,10 +148,9 @@ app.delete("/hotels/:id", async (req, res) => {
   //pagination
 app.get("/restaurants/",async(req, res) =>{
     try {
-      const page  = req.query;
-     const limit = req.query;
-     
-      const resto = await restaurantModel.paginate({}, { page: 2, limit: 3 });
+      const limit = req.query;
+      const page  = req.query;     
+      const resto = await restaurantModel.paginate({}, {limit: 3 , page: 2});
       return res.json(resto);
     } catch (error) {
       console.log("the pagination is not working");

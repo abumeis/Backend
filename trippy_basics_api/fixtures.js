@@ -1,16 +1,15 @@
 const mongoose = require("mongoose");
 const hotelModel = require("./models/hotel");
 const restaurantModel = require("./models/restaurant");
-
+const roomModel = require("./models/rooms");
 
 mongoose.connect(
-    "mongodb://localhost:27017/trippy_basics",
-    { useNewUrlParser: true, useUnifiedTopology: true },
-    () => {
-      console.log("database connected");
-    }
-  );
-
+  "mongodb://localhost:27017/trippy_basics",
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("database connected");
+  }
+);
 
 hotelModel.deleteMany({}).then(() => {
   hotelModel.create([
@@ -74,7 +73,6 @@ hotelModel.deleteMany({}).then(() => {
       hasPool: true,
       priceCategory: 1111,
     },
-    
   ]);
 }); //
 
@@ -134,6 +132,15 @@ restaurantModel.deleteMany({}).then(() => {
       cuisine: "Couscous",
       priceCategory: 11,
     },
+  ]);
+});
 
+roomModel.deleteMany({}).then(() => {
+  roomModel.create([
+    {
+      people: 3,
+      price: 100,
+      hasBathroom: true,
+    },
   ]);
 });
