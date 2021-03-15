@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const mongoosePaginate = require ('mongoose-paginate');
 const { Schema } = mongoose;
 
 const restaurantSchema = new Schema({
@@ -10,7 +11,6 @@ const restaurantSchema = new Schema({
   cuisine: String,
   priceCategory: Number,
 });
-
+restaurantSchema.plugin(mongoosePaginate);
 const restaurantModel = mongoose.model("restaurants", restaurantSchema);
-
 module.exports = restaurantModel;

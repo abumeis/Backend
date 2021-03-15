@@ -20,10 +20,10 @@ app.listen(port, () => console.log(`Trippy app listening on port ${port}`));
 ////CRUD Hotels
 
 //get all hotels
-app.get("/hotels", async (req, res) => {
-  const hotels = await hotelModel.find();
-  res.json(hotels);
-});
+//app.get("/hotels", async (req, res) => {
+//  const hotels = await hotelModel.find();
+//  res.json(hotels);
+//});
 
 //get by id
 app.get("/hotels/:id", async (req, res) => {
@@ -36,6 +36,42 @@ app.get("/hotels/:id", async (req, res) => {
 
   res.json(hotels);
 });
+
+//pagination
+app.get("/hotels/",async(req, res) =>{
+    try {
+      const  page  = req.query;
+     const limit = req.query;
+     //const options = {
+     //   page: parseInt(page, 10) || 1,
+     //   limit: parseInt(limit, 10)|| 1,
+     // };
+     
+      const hotels = await hotelModel.paginate({}, { page: 2, limit: 3 });
+      return res.json(hotels);
+    } catch (error) {
+      console.log("the pagination is not working");
+     
+    }
+})
+
+
+
+
+
+app.get("/hotels/", async (req, res) => {
+    const page = req.query.page
+    const limit = req.query.limit
+    try {
+      const getHotelById = await hotelModel.findById(req.params.id);
+      res.send(getHotelById);
+    } catch (error) {
+      res.send(`the hotel with ID ${req.params.id} not found`);
+    }
+  
+    res.json(hotels);
+  });
+  
 
 ///psot
 app.post("/hotels", async (req, res) => {
@@ -90,10 +126,10 @@ app.delete("/hotels/:id", async (req, res) => {
 ////CRUD Resturants
 
 //get All the Restaurants
-app.get("/restaurants", async (req, res) => {
-    const resto = await restaurantModel.find();
-    res.json(resto);
-  });
+//app.get("/restaurants", async (req, res) => {
+//    const resto = await restaurantModel.find();
+//    res.json(resto);
+//  });
   
   //get by id
   app.get("/restaurants/:id", async (req, res) => {
@@ -107,6 +143,20 @@ app.get("/restaurants", async (req, res) => {
     res.json(hotels);
   });
   
+
+  //pagination
+app.get("/restaurants/",async(req, res) =>{
+    try {
+      const page  = req.query;
+     const limit = req.query;
+     
+      const resto = await restaurantModel.paginate({}, { page: 2, limit: 3 });
+      return res.json(resto);
+    } catch (error) {
+      console.log("the pagination is not working");
+     
+    }
+})
   ///psot
   app.post("/restaurants", async (req, res) => {
     try {
