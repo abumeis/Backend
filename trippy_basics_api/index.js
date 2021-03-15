@@ -75,7 +75,7 @@ app.put("/hotels/:id", async (req, res) => {
 }
 });
 
-app.delete("/hotels/:id", async (req, res, next) => {
+app.delete("/hotels/:id", async (req, res) => {
   try {
      await hotelModel.deleteOne({ _id: req.params.id })  
       res.send(`the hotel with ID ${req.params.id} has been deleted`);
@@ -145,7 +145,7 @@ app.get("/restaurants", async (req, res) => {
     }
   });
   
-  app.delete("/restaurants/:id", async (req, res, next) => {
+  app.delete("/restaurants/:id", async (req, res) => {
     try {
       await restaurantModel.deleteOne({ _id: req.params.id })
       res.send(`the resto with ID ${req.params.id} has been deleted`);
