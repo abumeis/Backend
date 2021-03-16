@@ -11,6 +11,8 @@ const hotelSchema = new Schema({
   hasSpa: Boolean,
   hasPool: Boolean,
   priceCategory: Number,
+  rooms: [{ type: mongoose.Types.ObjectId, ref: "rooms" }],
+
 });
 hotelSchema.plugin(mongoosePaginate);
 const hotelModel = mongoose.model("hotels", hotelSchema);
