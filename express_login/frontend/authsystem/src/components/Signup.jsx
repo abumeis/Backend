@@ -112,7 +112,7 @@ class signup extends Component {
               value="submit"
               onClick={this.onSubmit}
             >
-              {" "}
+
               Submit
             </button>
             <Link className="text-decoration-none text-center fs-5" to="/login">Login</Link>

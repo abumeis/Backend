@@ -9,11 +9,11 @@ export default class App extends Component {
       <div>
         <BrowserRouter>
           <Switch>
-            <Route path="/login">
-              <Login />
-            </Route>
             <Route path="/signup">
               <Signup />
+            </Route>
+            <Route path="/login">
+              <Login />
             </Route>
             <Route path="/admin">
               <Admin />

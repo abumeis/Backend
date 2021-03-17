@@ -7,7 +7,7 @@ const userSchema = new Schema({
     dateOfBirth: { type: Date, required: true },
     email: { type: String, required: true, unique: true, },
     password: { type: String, required: true },
-    //passwordConfirmation: { type: String, required: true },
+    ///passwordConfirmation: { type: String, required: true },
 
 
 });
