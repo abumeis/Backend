@@ -47,7 +47,7 @@ app.post("/signup", loginValidate, async (req, res) => {
             dateOfBirth: (req.body.dateOfBirth),
             email: req.body.email,
             password: bcryptjs.hashSync(req.body.password),
-            passwordConfirmation: bcryptjs.hashSync(req.body.passwordConfirmation),
+            //passwordConfirmation: bcryptjs.hashSync(req.body.passwordConfirmation),
         });
         res.send("well done");
     } catch (error) {
@@ -55,3 +55,31 @@ app.post("/signup", loginValidate, async (req, res) => {
     }
 }
 )
+
+
+app.post("/login", async (req, res) => {
+    const user = await userModel
+      .findOne({
+        email: req.body.email,
+    })
+      .exec();
+  
+    if (bcryptjs.compareSync(req.body.password, user.password)) {
+      const token = jwt.sign(
+        {
+          id: user._id,
+        },
+        "secret_Message",
+        {
+          expiresIn: 6000,
+        }
+      );
+  
+      res.status(200).json({
+        message: "connected",
+        token: token,
+      });
+    } else {
+      res.status(401).send("incorrect password");
+    }
+  });
