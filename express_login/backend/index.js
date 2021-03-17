@@ -23,7 +23,7 @@ app.listen(port, () => console.log(`Login App listening on port ${port}`));
 
 const loginValidate = [
     // Check Username
-    check('email', 'Username Must Be an Email Address').isEmail()
+    check('email',).isEmail()
         .trim().escape().normalizeEmail(),
     // Check Password
     check('password').isLength({ min: 8 }).withMessage('Password Must Be at Least 8 Characters').custom((value, { req, loc, path }) => {
@@ -47,7 +47,7 @@ app.post("/signup", loginValidate, async (req, res) => {
             dateOfBirth: (req.body.dateOfBirth),
             email: req.body.email,
             password: bcryptjs.hashSync(req.body.password),
-            //passwordConfirmation: req.body.passwordConfirmation,
+            passwordConfirmation: bcryptjs.hashSync(req.body.passwordConfirmation),
         });
         res.send("well done");
     } catch (error) {
