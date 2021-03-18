@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
+    profilePic: { type: String, },
     firstName: { type: String, required: true },
     surName: { type: String, unique: true, required: true },
     dateOfBirth: { type: Date, required: true },

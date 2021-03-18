@@ -6,10 +6,10 @@ const config = require("./config");
 
 
 const app = express();
+app.use(cors());
 const userRoute = require("./controllers/user");
 app.use(bodyParser.json());
 app.use(userRoute);
-app.use(cors());
 
 
 

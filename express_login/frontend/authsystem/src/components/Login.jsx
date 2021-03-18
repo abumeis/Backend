@@ -53,7 +53,9 @@ class login extends Component {
               value={this.state.password}
               onChange={this.onChangePassword}
             />
-            <button
+          </form>
+          <div>
+          <button
               type="submit"
               style={{ width: "100px" }}
               className="btn btn-primary"
@@ -62,8 +64,8 @@ class login extends Component {
             >
               login
             </button>
-            <Link className="text-decoration-none text-center fs-5" to="/signup">Signup</Link>
-          </form>
+            <Link className="text-decoration-none text-center fs-5" to="/signup">Signup</Link>        
+          </div>
         </div>
       </div>
     );

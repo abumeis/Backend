@@ -11,7 +11,8 @@ const verfiyPassword = [
         } else {
             return value;
         }
-    }).matches('[0-9]').withMessage('Password Must Contain a Number').matches('[A-Z]').withMessage('Password Must Contain an Uppercase Letter').trim().escape()
-];
+    }).matches('[0-9]').withMessage('Password Must Contain a Number').matches('[A-Z]').withMessage('Password Must Contain an Uppercase Letter').trim().escape(),
 
+
+];
 module.exports = verfiyPassword;
