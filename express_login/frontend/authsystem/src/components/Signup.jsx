@@ -11,13 +11,14 @@ class signup extends Component {
       email: "",
       password: "",
       passwordConfirmation: "",
+      
     };
   }
 
   onChangeFirstName = (e) => {
     this.setState({ firstName: e.target.value });
   };
-  onChangeSurname = (e) => {
+  onChangeSurName = (e) => {
     this.setState({ surName: e.target.value });
   };
   onChangeDateOfBirth = (e) => {
@@ -71,8 +72,8 @@ class signup extends Component {
               type="text"
               class="form-control"
               placeholder="Surname"
-              value={this.state.surname}
-              onChange={this.onChangeSurname}
+              value={this.state.surName}
+              onChange={this.onChangeSurName}
             />
             <input
               type="date"
@@ -89,6 +90,14 @@ class signup extends Component {
               value={this.state.email}
               onChange={this.onChangeEmail}
             />
+            <select  style={{ width: "500px" }}
+             class="form-select" aria-label="Default select example">
+                  <option selected> select your city</option>
+                  <option value="1">Paris</option>
+                  <option value="2">Tokyo</option>
+                  <option value="3">Los Angeles</option>
+            </select>
+              
             <input
               style={{ width: "500px" }}
               type="text"

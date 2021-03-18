@@ -6,21 +6,20 @@ import Admin from "./components/Admin"
 export default class App extends Component {
   render() {
     return (
-      <div>
-        <BrowserRouter>
-          <Switch>
-            <Route path="/signup">
-              <Signup />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/admin">
-              <Admin />
-            </Route>
-          </Switch>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <Switch>
+
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/admin">
+            <Admin />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     )
   }
 }

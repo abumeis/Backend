@@ -3,6 +3,7 @@ const userModel = require("../models/user");
 const router = express.Router();
 const { validationResult } = require('express-validator');
 const verfiyPassword = require("../middlewars/verfiyPassword")
+const verifyToken = require("../middlewars/verifyToken")
 const jwt = require("jsonwebtoken");
 const bcryptjs = require("bcryptjs")
 
@@ -18,6 +19,7 @@ router.post("/signup", verfiyPassword, async (req, res) => {
             firstName: req.body.firstName,
             surName: req.body.surName,
             dateOfBirth: (req.body.dateOfBirth),
+            city: req.body.city,
             email: req.body.email,
             password: bcryptjs.hashSync(req.body.password),
             //passwordConfirmation: bcryptjs.hashSync(req.body.passwordConfirmation),
@@ -53,4 +55,10 @@ router.post("/login", async (req, res) => {
         res.status(401).send("incorrect password");
     }
 });
+
+router.get("/admin", verifyToken, async (req, res) => {
+    res.send(`Welcome ${req.user.firstName} to our Web Page`);
+});
+
+
 module.exports = router;
